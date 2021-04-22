@@ -9,7 +9,7 @@
 		<version>2.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cadent.test</groupId>
+	<groupId>com.test</groupId>
 	<artifactId>selenex</artifactId>
 	<version>1.0.0</version>
 	<name>selenex</name>
@@ -165,6 +165,29 @@
 		<plugin>
 			<artifactId>maven-resources-plugin</artifactId>
 			<version>3.0.2</version>
+			<executions>
+				<execution>
+					<id>copy-resources</id>
+					<!-- here the phase you need -->
+					<phase>install</phase>
+					<goals>
+						<goal>copy-resources</goal>
+					</goals>
+					<configuration>
+						<outputDirectory>SampleTestProject/lib</outputDirectory>
+						<resources>
+							<resource>
+								<directory>${basedir}/target</directory>
+								<include>*.jar</include>
+							</resource>
+							<resource>
+								<directory>${basedir}</directory>
+								<include>pom.xml</include>
+							</resource>
+						</resources>
+					</configuration>
+				</execution>
+			</executions>
 		</plugin>
 
 	</plugins>
